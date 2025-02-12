@@ -42,12 +42,12 @@ public class AuthenticationService {
 	public User authenticate(LoginUserDto input) {
 		authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(
-						input.getEmail(),
+						input.getUserName(),
 						input.getPassword()
 						)
 		);
 		
-		return userRepository.findByEmail(input.getEmail())
+		return userRepository.findByUsername(input.getUserName())
 				.orElseThrow();
 	}
 }
